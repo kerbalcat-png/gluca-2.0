@@ -28,9 +28,7 @@
 }
 
 .logo {
-  background-image: url(images/glucaLogo_small.png);
   height: 100%;
-  width: 250px;
   background-repeat: no-repeat;
 }
 
@@ -39,6 +37,7 @@
   list-style: none;
   display: flex;
   gap: 30px;
+  font-size: 18px;
 }
 
 .nav-links a {
