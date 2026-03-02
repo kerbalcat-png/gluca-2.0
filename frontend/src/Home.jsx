@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
-import "../App.css";
+import "./App.css";
 
 function Home() {
   return (
     <div className="home">
 
       <div className="top-banner">
-        SMART HEALTH STARTS WITH SMART CHOICES
+        RIDE THE SPIKE
       </div>
 
       <nav className="navbar">
-        <div className="logo">GLUCA</div>
+        <div className="logo"></div>
+        <div className="title">GLUCA</div>
 
         <ul className="nav-links">
           <li><Link to="/about">About</Link></li>
@@ -32,7 +33,7 @@ function Home() {
           </p>
 
           <Link to="/scan">
-            <button className="primary-btn">SCAN NOW</button>
+            <button className="scan-btn">SCAN NOW</button>
           </Link>
         </div>
 

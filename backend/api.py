@@ -42,13 +42,11 @@ def get_spoon(query):
         params["type"] = meal_type
 
     response = requests.get(url, params=params)
-    print("i get here")
 
     if response.status_code == 200:
         print("and here to ")
         return jsonify(response.json())
     else:
-        print("i break")
         return jsonify({
             "error": "Request failed",}), 404
     
