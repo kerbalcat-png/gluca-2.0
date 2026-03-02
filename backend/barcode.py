@@ -3,21 +3,26 @@ import cv2
 from pyzbar.pyzbar import decode
 
 def barcode_read(imagePath):
-    image = cv2.imread(imagePath)
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    try:
+        image = cv2.imread(imagePath)
+        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    # Detect barcodes in the grayscale image
-    barcodes = decode(gray)
+        # Detect barcodes in the grayscale image
+        barcodes = decode(gray)
 
-    # Loop over detected barcodes
-    for barcode in barcodes:
-        # Extract barcode data and type
-        barcode_data = barcode.data.decode("utf-8")
-        barcode_type = barcode.type
+        # Loop over detected barcodes
+        for barcode in barcodes:
+            # Extract barcode data and type
+            barcode_data = barcode.data.decode("utf-8")
+            barcode_type = barcode.type
 
-        # Print barcode data and type
-        print("Barcode Data:", barcode_data)
-        print("Barcode Type:", barcode_type)
-
+            # Print barcode data and type
+            print("Barcode Data:", barcode_data)
+            print("Barcode Type:", barcode_type)
+    except cv2.error:
+        print("File error, check file path")
+        return None
+        
 
 #print(barcode_read("computer2.jpg"))
+#print(barcode_read(""))
