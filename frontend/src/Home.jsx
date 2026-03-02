@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "../App.css";
+import "./App.css";
 
 function Home() {
   return (
@@ -32,7 +32,7 @@ function Home() {
           </p>
 
           <Link to="/scan">
-            <button className="primary-btn">SCAN NOW</button>
+            <button className="scan-btn">SCAN NOW</button>
           </Link>
         </div>
 

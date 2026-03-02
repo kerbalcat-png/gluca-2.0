@@ -1,45 +1,100 @@
-<<<<<<< HEAD
-.page {
-  height: 100vh;
-  width: 100vw;
-}
-=======
-.App {
+.top-banner {
+  background-color: #163d23;
+  color: white;
   text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background-color: #1e5631;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 8%;
+  background-color: #e8f3ea;
+  min-height: 85vh;
+}
+
+.hero-left {
+  max-width: 600px;
+}
+
+.hero-left h1 {
+  font-size: 52px;
+  color: #1e5631;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-left p {
+  font-size: 18px;
+  color: #2e7d32;
+  margin-bottom: 30px;
+}
+
+.scan-btn {
+  padding: 15px 35px;
+  border: none;
+  border-radius: 30px;
+  background-color: #1e5631;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  background-color: #163d23;
+}
+
+.hero-right {
+  width: 350px;
+  height: 400px;
+  background-color: #cde8d1;
+  border-radius: 40px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.product-card {
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  color: #1e5631;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
->>>>>>> 1502bacfd96f66a1f36cda4ed1abdb6b8be09eab
