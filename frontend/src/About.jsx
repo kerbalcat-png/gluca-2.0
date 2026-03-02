@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div className="about-container">
       <section className="about-hero">
-        <h1>About GlucoGuide</h1>
+        <h1>About Gluca</h1>
         <p>
           Smarter glucose tracking. Personalized nutrition. Health made simple.
         </p>
@@ -14,7 +14,7 @@ const About = () => {
       <section className="about-section">
         <h2>Our Mission</h2>
         <p>
-          GlucoGuide empowers individuals to take control of their health by
+          Gluca empowers individuals to take control of their health by
           tracking glucose levels in real-time and transforming that data into
           personalized recipe recommendations. We believe managing glucose
           should feel supportive — not overwhelming.
@@ -25,7 +25,7 @@ const About = () => {
         <h2>How It Works</h2>
         <div className="about-grid">
           <div className="about-card">
-            <h3>📊 Track</h3>
+            <h3>Track</h3>
             <p>
               Log your glucose readings manually or sync with supported glucose
               monitors. Visual dashboards help you understand patterns over time.
@@ -33,7 +33,7 @@ const About = () => {
           </div>
 
           <div className="about-card">
-            <h3>🧠 Analyze</h3>
+            <h3> Analyze</h3>
             <p>
               Our smart system evaluates your glucose trends to determine what
               foods best support your current levels and long-term goals.
@@ -41,7 +41,7 @@ const About = () => {
           </div>
 
           <div className="about-card">
-            <h3>🍽 Generate</h3>
+            <h3> Generate</h3>
             <p>
               Receive personalized recipe recommendations tailored to your
               glucose range — whether you need to stabilize, increase, or lower
@@ -54,7 +54,7 @@ const About = () => {
       <section className="about-section">
         <h2>Who It's For</h2>
         <p>
-          GlucoGuide is designed for individuals managing diabetes, prediabetes,
+          Gluca is designed for individuals managing diabetes, prediabetes,
           athletes optimizing performance, and anyone looking to better
           understand how nutrition affects their body.
         </p>

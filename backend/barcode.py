@@ -17,9 +17,9 @@ def barcode_read(imagePath):
             barcode_type = barcode.type
 
             # Print barcode data and type
-            print("Barcode Data:", barcode_data)
-            print("Barcode Type:", barcode_type)
-    except cv2.error:
+            return barcode_data
+
+    except cv2.error:#file error exception
         print("File error, check file path")
         return None
         
