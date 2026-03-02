@@ -1,0 +1,104 @@
+.about-container {
+  font-family: "Inter", sans-serif;
+  padding: 80px 8%;
+  background-color: #e8f3ea; /* matches hero background */
+  color: #1e5631;
+}
+
+/* Hero Section */
+.about-hero {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.about-hero h1 {
+  font-size: 48px;
+  color: #1e5631;
+  margin-bottom: 20px;
+}
+
+.about-hero p {
+  font-size: 18px;
+  color: #2e7d32;
+}
+
+/* Sections */
+.about-section {
+  margin-bottom: 80px;
+}
+
+.about-section h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #163d23;
+}
+
+.about-section p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #2e7d32;
+  max-width: 800px;
+}
+
+/* Grid */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Cards */
+.about-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+  text-align: center;
+}
+
+.about-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #1e5631;
+}
+
+.about-card p {
+  font-size: 16px;
+  color: #2e7d32;
+}
+
+.about-card:hover {
+  transform: translateY(-8px);
+}
+
+/* CTA Section */
+.about-cta {
+  text-align: center;
+  background-color: #cde8d1;
+  padding: 60px;
+  border-radius: 40px;
+}
+
+.about-cta h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #163d23;
+}
+
+.about-button {
+  margin-top: 25px;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 30px;
+  background-color: #1e5631;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.about-button:hover {
+  background-color: #163d23;
+}

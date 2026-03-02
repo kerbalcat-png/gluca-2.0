@@ -1,2 +1,3 @@
 ./gluca/node_modules/*
 .vscode/settings.json
+node_modules/.package-lock.json
