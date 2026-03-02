@@ -7,7 +7,7 @@ const About = () => {
       <section className="about-hero">
         <h1>About Gluca</h1>
         <p>
-          Smarter glucose tracking. Personalized nutrition. Health made simple.
+          Smarter glucose tracking. Personalised nutrition. Health made simple.
         </p>
       </section>
 
@@ -43,7 +43,7 @@ const About = () => {
           <div className="about-card">
             <h3> Generate</h3>
             <p>
-              Receive personalized recipe recommendations tailored to your
+              Receive personalised recipe recommendations tailored to your
               glucose range — whether you need to stabilize, increase, or lower
               your levels.
             </p>
