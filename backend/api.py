@@ -22,9 +22,12 @@ def process_barcode():
     image_file = request.files["file"]
     image_file.save(image_file.filename)
     item_code = barcode_read(image_file.filename)
+    off_get_catagories(item_code)
 
-def off_get_catagories():
-    request()
+def off_get_catagories(item_code):
+    params = {{ Authorization: "Basic " + btoa("off:off") }}
+    url = f"https://world.openfoodfacts.net/api/v2/product/{item_code}.json"
+    requests.get(params)
 
 @app.route("/spoon/<string:query>", methods=["GET"])
 def get_spoon(query):
