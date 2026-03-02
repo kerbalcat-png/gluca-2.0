@@ -6,11 +6,12 @@ function Home() {
     <div className="home">
 
       <div className="top-banner">
-        SMART HEALTH STARTS WITH SMART CHOICES
+        RIDE THE SPIKE
       </div>
 
       <nav className="navbar">
-        <div className="logo">GLUCA</div>
+        <div className="logo"></div>
+        <div className="title">GLUCA</div>
 
         <ul className="nav-links">
           <li><Link to="/about">About</Link></li>

@@ -15,11 +15,15 @@
   background-color: #1e5631;
 }
 
-.logo {
+.title {
   font-size: 26px;
   font-weight: bold;
   color: white;
   letter-spacing: 2px;
+}
+
+.logo {
+  background-image: url(glucalogo.png);
 }
 
 .nav-links {
