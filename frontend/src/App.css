@@ -1,3 +1,7 @@
+.home {
+  height: 100vh;
+}
+
 .top-banner {
   background-color: #163d23;
   color: white;
@@ -13,6 +17,7 @@
   align-items: center;
   padding: 20px 8%;
   background-color: #1e5631;
+  height: 10%;
 }
 
 .title {
@@ -23,8 +28,12 @@
 }
 
 .logo {
-  background-image: url(glucalogo.png);
+  background-image: url(images/glucaLogo_small.png);
+  height: 100%;
+  width: 250px;
+  background-repeat: no-repeat;
 }
+
 
 .nav-links {
   list-style: none;

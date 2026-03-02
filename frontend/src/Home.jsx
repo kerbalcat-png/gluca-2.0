@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./App.css";
+import logo from "./images/glucaLogo_small.png";
 
 function Home() {
   return (
@@ -10,9 +11,10 @@ function Home() {
       </div>
 
       <nav className="navbar">
-        <div className="logo"></div>
+        <div className="logo">
+          <img src={logo} alt="Gluca Logo" className="max-h-full" />
+        </div>
         <div className="title">GLUCA</div>
-
         <ul className="nav-links">
           <li><Link to="/about">About</Link></li>
           <li><Link to="/scan">Scan Barcode</Link></li>
