@@ -35,11 +35,12 @@ def process_barcode_test():
     # print(item_code)
     # code = "3017620422003"
     # code = "5060283763523"
+    # off_get_catagories(item_code)
+    # return("ok")
     code = barcode_read("crisps1.jpg")
     results = api.product.get(code, fields=["categories_hierarchy"])
-    # off_get_catagories(item_code)
     return(results)
-    # return("ok")
+    
 
 def get_recipies():
     pass
