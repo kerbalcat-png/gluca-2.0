@@ -110,3 +110,21 @@
   color: #1e5631;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
+
+.file-input {
+  display: flex;
+  position: relative;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-preview {
+  margin-top: 15px;
+}
+
+.preview-img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 10px;
+}
