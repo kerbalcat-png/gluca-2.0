@@ -1,8 +1,22 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./App.css";
 import logo from "./images/glucaLogo_small.png";
 
 function Home() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setSelectedImage(URL.createObjectURL(file));
+    }
+  };
+
+  function handleFileInputClick(){
+    document.getElementById("fileInput").click()
+  }
+
   return (
     <div className="home">
 
@@ -40,9 +54,27 @@ function Home() {
         </div>
 
         <div className="hero-right">
-          <div className="product-card">
-            <h3>Gluca Scanner</h3>
-            <p>Real-time barcode detection</p>
+          <div className="product-card" onClick={handleFileInputClick}>
+            <h3>Upload Product Image</h3>
+            <p>Select a food product image to analyze</p>
+
+            <input 
+              id="fileInput"
+              type="file" 
+              accept="image/*" 
+              onClick ={handleImageUpload}
+              className="file-input"
+            />
+
+            {selectedImage && (
+              <div className="image-preview">
+                <img 
+                  src={selectedImage} 
+                  alt="Preview" 
+                  className="preview-img"
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>

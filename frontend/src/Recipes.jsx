@@ -1,6 +1,9 @@
 function Recipes() {
     return(
-    <div className="hello"></div>
+    <div className="hello">
+        
+    </div>
+
     )
 
 };
