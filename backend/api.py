@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 import dotenv
 import os
 from barcode import barcode_read
+import openfoodfacts
+import cv2
+from pyzbar.pyzbar import decode
 
 app = Flask(__name__)
 CORS(app)
@@ -22,12 +25,35 @@ def process_barcode():
     image_file = request.files["file"]
     image_file.save(image_file.filename)
     item_code = barcode_read(image_file.filename)
-    off_get_catagories(item_code)
+    # off_get_catagories(item_code)
 
-def off_get_catagories(item_code):
-    params = {{ Authorization: "Basic " + btoa("off:off") }}
-    url = f"https://world.openfoodfacts.net/api/v2/product/{item_code}.json"
-    requests.get(params)
+@app.route("/barcode/test", methods=["GET"])
+def process_barcode_test():
+    api = openfoodfacts.API(user_agent="MyAwesomeApp/1.0")
+    # item_code = barcode_read("/images/crisps2")
+    # item_code = 506028376763523
+    # print(item_code)
+    # code = "3017620422003"
+    # code = "5060283763523"
+    code = barcode_read("crisps1.jpg")
+    results = api.product.get(code, fields=["categories_hierarchy"])
+    # off_get_catagories(item_code)
+    return(results)
+    # return("ok")
+
+def get_recipies():
+    pass
+
+@app.route("/barcode/test/read", methods=["GET"])
+def test_read():
+  barcode_read("crisps1.jpg")
+
+
+# def off_get_catagories(item_code):
+
+#     url = f"https://world.openfoodfacts.net/api/v2/product/{item_code}.json"
+#     results = requests.get(url, headers={"Authorization": "Basic " ,"btoa": ("off:off") })
+#     print("results", results.text)
 
 @app.route("/spoon/<string:query>", methods=["GET"])
 def get_spoon(query):
