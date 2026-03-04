@@ -137,6 +137,15 @@ def get_spoon(query, internal = False):
             "error": "Request failed",}), 404
     
 
+@app.route("/search/<string:query>", methods=["GET"])
+def get_search(query):
+    req_url = f"https://api.spoonacular.com/food/menuItems/suggest?query={query}&number=5&apiKey={Spoonacular_Api_Key}"
+    res = requests.get(req_url)
+    print(res.json())
+    if res.ok:
+        return jsonify(res.json()), 200
+    return jsonify({"res": "error"}), 500
+
 @app.route("/name/<string:query>", methods=["GET"])
 def get_name(query):
     url = "https://api.spoonacular.com/recipes/complexSearch"

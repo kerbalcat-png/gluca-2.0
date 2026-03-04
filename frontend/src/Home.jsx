@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 function Home() {
@@ -12,6 +12,14 @@ function Home() {
       setSelectedImage(URL.createObjectURL(file));
     }
   };
+
+   function Searchbar() {
+    return(
+      <div>
+        <input placeholder="Search for a recipe"/>
+      </div>
+    )
+  }
 
   function handleFileInputClick() {
     document.getElementById("fileInput").click();
