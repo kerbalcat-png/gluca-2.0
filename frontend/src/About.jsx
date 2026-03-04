@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./images/glucaLogo_small.png";
+import Navbar from "./component/navbar";
 import "./About.css";
 
 const About = () => {
+  <Navbar />
   return (
     <>
       <nav className="navbar">
