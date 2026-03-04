@@ -4,6 +4,7 @@ import "./App.css";
 
 function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [bytes, setBytes] = useState(null); 
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -12,13 +13,22 @@ function Home() {
     }
   };
 
-  function handleFileInputClick(){
-    document.getElementById("fileInput").click()
+  function handleFileInputClick() {
+    document.getElementById("fileInput").click();
+  }
+
+  function handleBytes(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setBytes(reader.result); 
+    };
+    reader.readAsDataURL(file);
   }
 
   return (
-    <div className="home">     
-
       <section className="hero">
         <div className="hero-left">
           <h1>
@@ -38,32 +48,42 @@ function Home() {
         </div>
 
         <div className="hero-right">
-          <div className="product-card" onClick={handleFileInputClick}>
-            <h3>Upload Product Image</h3>
-            <p>Select a food product image to analyze</p>
+          <form
+            action="http://localhost:5000/barcode"
+            method="POST"
+            encType="multipart/form-data"
+          >
+            <div className="product-card" onClick={handleFileInputClick}>
+              <h3>Upload Product Image</h3>
+              <p>Select a food product image to analyze</p>
 
-            <input 
-              id="fileInput"
-              type="file" 
-              accept="image/*" 
-              onClick ={handleImageUpload}
-              className="file-input"
-            />
+              <input
+                id="fileInput"
+                type="file"
+                name="file"
+                accept="image/*"
+                onChange={(e) => {
+                  handleImageUpload(e);
+                  handleBytes(e); 
+                }}
+                className="file-input"
+              />
 
-            {selectedImage && (
-              <div className="image-preview">
-                <img 
-                  src={selectedImage} 
-                  alt="Preview" 
-                  className="preview-img"
-                />
-              </div>
-            )}
-          </div>
+              {selectedImage && (
+                <div className="image-preview">
+                  <img
+                    src={selectedImage}
+                    alt="Preview"
+                    className="preview-img"
+                  />
+                </div>
+              )}
+            </div>
+
+            <input type="submit" />
+          </form>
         </div>
       </section>
-
-    </div>
   );
 }
 
