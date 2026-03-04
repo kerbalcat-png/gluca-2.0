@@ -2,11 +2,13 @@
 import cv2
 from pyzbar.pyzbar import decode
 
-def barcode_read(imagePath):
+def barcode_read(imagePath, binary = True):
       #  try:
    # read the image in numpy array using cv2
-    img = cv2.imread(imagePath)
-     
+    if not binary:
+        img = cv2.imread(imagePath)
+    else:
+        img = imagePath
     if img is None:
         return "Image not found or path is incorrect!"
 
