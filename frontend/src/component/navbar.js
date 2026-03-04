@@ -1,25 +1,27 @@
 import React from "react";
+import {Link} from "react-router-dom"
+import logo from "../images/glucaLogo_small.png";
 
 
 function Navbar() {
   return (
-    <div className="home">
+    <>
 
       <div className="top-banner">
         Ride the spike
       </div>
 
-      <nav className="navbar">
-        <div className="title">
-          Gluca
+       <nav className="navbar">
+        <div className="logo">
+          <img src={logo} alt="Gluca Logo" className="max-h-full bg-no-repeat" />
         </div>
-
+        <div className="title">GLUCA</div>
         <ul className="nav-links">
-          <li><a href="/About.jsx">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/recipes">Recipes</Link></li>
         </ul>
       </nav>
-    </div>
+      </>
   );
 }
 
