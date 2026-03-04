@@ -6,7 +6,6 @@ def barcode_read(imagePath):
       #  try:
    # read the image in numpy array using cv2
     img = cv2.imread(imagePath)
-     
     if img is None:
         return "Image not found or path is incorrect!"
 

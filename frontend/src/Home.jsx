@@ -81,7 +81,7 @@ function Home() {
               )}
             </div>
 
-            <input type="submit" />
+            <input type="submit" formMethod="POST"/>
           </form>
         </div>
       </section>

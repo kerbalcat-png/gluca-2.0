@@ -9,8 +9,9 @@ import openfoodfacts
 import cv2
 from pyzbar.pyzbar import decode
 
+
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True)
 
 load_dotenv()
 Spoonacular_Api_Key = os.getenv("Spoonacular_Api_Key")
@@ -20,12 +21,12 @@ Spoonacular_Api_Key = os.getenv("Spoonacular_Api_Key")
 def home():
     return "Flask is running! Use /spoon/<query>?type=breakfast&number=5 to search recipes."
 
-@app.route("/barcode", methods=["POST"])
+@app.route("/barcode", methods=["GET", "POST"])
 def process_barcode():
     image_file = request.files["file"]
-    print(image_file)
     image_file.save(image_file.filename)
     code = barcode_read(image_file.filename)
+    
 
     
     url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
@@ -36,9 +37,8 @@ def process_barcode():
         #get spoon recipies
         if response.json()["code"] == "":
             return jsonify({"error": response.json()["status_verbose"]}), response.status_code
-        
+        # return jsonify(response.json())
         name = response.json()["product"]["product_name"]
-        print(name)
         recipies = get_spoon(query=name, internal=True)
 
         if response.status_code == 200:
@@ -50,15 +50,15 @@ def process_barcode():
     except requests.exceptions.Timeout:
         return jsonify({"error": "OpenFoodFacts took too long to respond"}), 504
 
-@app.route("/barcode/1/test", methods=["GET"])
-def process_barcode1_test():
-    api = openfoodfacts.API(user_agent="MyAwesomeApp/1.0")
+# @app.route("/barcode/1/test", methods=["GET"])
+# def process_barcode1_test():
+#     api = openfoodfacts.API(user_agent="MyAwesomeApp/1.0")
 
-    code = barcode_read("crisps1.jpg")
+#     code = barcode_read("crisps1.jpg")
 
-    results = api.product.get(code, fields=["categories_hierarchy"])
-    tosearch = []
-    return results
+#     results = api.product.get(code, fields=["categories_hierarchy"])
+#     tosearch = []
+#     return results
         # item_code = barcode_read("/images/crisps2")
     # item_code = 506028376763523
     # print(item_code)
@@ -67,40 +67,40 @@ def process_barcode1_test():
     # off_get_catagories(item_code)
 
 
-@app.route("/barcode/2/test", methods=["GET"])
-def process_barcode2_test():
-    # code = "3017620422003"#preset code for testing
-    code = barcode_read("crisps1.jpg")
+# @app.route("/barcode/2/test", methods=["GET"])
+# def process_barcode2_test():
+#     # code = "3017620422003"#preset code for testing
+#     code = barcode_read("crisps1.jpg")
     
-    url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
+#     url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
 
-    try:
-        response = requests.get(url, timeout=60)
-        # print(response.json()["product"]["ciqual_food_name_tags"][0])#debug
-        #get spoon recipies
-        if response.json()["code"] == "":
-            return jsonify({"error": response.json()["status_verbose"]}), response.status_code
+#     try:
+#         response = requests.get(url, timeout=60)
+#         # print(response.json()["product"]["ciqual_food_name_tags"][0])#debug
+#         #get spoon recipies
+#         if response.json()["code"] == "":
+#             return jsonify({"error": response.json()["status_verbose"]}), response.status_code
         
-        name = response.json()["product"]["product_name"]
-        print(name)
-        recipies = get_spoon(query=name, internal=True)
+#         name = response.json()["product"]["product_name"]
+#         print(name)
+#         recipies = get_spoon(query=name, internal=True)
 
-        if response.status_code == 200:
-            # return jsonify(response.json()["product"]["product_name"])
-            return jsonify(recipies)
-        else:
-            return jsonify({"error": "Product not found"}), 404
+#         if response.status_code == 200:
+#             # return jsonify(response.json()["product"]["product_name"])
+#             return jsonify(recipies)
+#         else:
+#             return jsonify({"error": "Product not found"}), 404
 
-    except requests.exceptions.Timeout:
-        return jsonify({"error": "OpenFoodFacts took too long to respond"}), 504
+#     except requests.exceptions.Timeout:
+#         return jsonify({"error": "OpenFoodFacts took too long to respond"}), 504
     
 
 def get_recipies():
     pass
 
-@app.route("/barcode/test/read", methods=["GET"])
-def test_read():
-  barcode_read("crisps1.jpg")
+# @app.route("/barcode/test/read", methods=["GET"])
+# def test_read():
+#   barcode_read("crisps1.jpg")
 
 
 # def off_get_catagories(item_code):
