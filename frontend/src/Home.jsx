@@ -35,7 +35,7 @@ function Home() {
           <h1>
             GREAT HEALTH <br />
             DOESN'T HAVE TO <br />
-            COST THE EARTH
+            BE BORING
           </h1>
 
           <p>
