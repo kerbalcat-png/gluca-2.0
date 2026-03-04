@@ -17,6 +17,7 @@ function Home() {
     document.getElementById("fileInput").click();
   }
 
+  // Function to convert file to bytes
   function handleBytes(e) {
     const file = e.target.files[0];
     if (!file) return;
