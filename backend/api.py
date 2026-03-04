@@ -19,16 +19,16 @@ Spoonacular_Api_Key = os.getenv("Spoonacular_Api_Key")
 
 @app.route("/")
 def home():
-    return "Flask is running! Use /spoon/<query>?type=breakfast&number=5 to search recipes."
+    return "Flask is running! Hurrah!"
 
 @app.route("/barcode", methods=["GET", "POST"])
 def process_barcode():
     image_file = request.files["file"]
     image_file.save(image_file.filename)
     code = barcode_read(image_file.filename)
-    
 
-    
+
+
     url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
 
     try:
@@ -75,16 +75,14 @@ def process_barcode():
 # def process_barcode2_test():
 #     # code = "3017620422003"#preset code for testing
 #     code = barcode_read("crisps1.jpg")
-    
 #     url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
-
 #     try:
 #         response = requests.get(url, timeout=60)
 #         # print(response.json()["product"]["ciqual_food_name_tags"][0])#debug
 #         #get spoon recipies
 #         if response.json()["code"] == "":
 #             return jsonify({"error": response.json()["status_verbose"]}), response.status_code
-        
+
 #         name = response.json()["product"]["product_name"]
 #         print(name)
 #         recipies = get_spoon(query=name, internal=True)
@@ -94,13 +92,8 @@ def process_barcode():
 #             return jsonify(recipies)
 #         else:
 #             return jsonify({"error": "Product not found"}), 404
-
 #     except requests.exceptions.Timeout:
 #         return jsonify({"error": "OpenFoodFacts took too long to respond"}), 504
-    
-
-def get_recipies():
-    pass
 
 # @app.route("/barcode/test/read", methods=["GET"])
 # def test_read():
