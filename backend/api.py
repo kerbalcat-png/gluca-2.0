@@ -37,9 +37,13 @@ def process_barcode():
         #get spoon recipies
         if response.json()["code"] == "":
             return jsonify({"error": response.json()["status_verbose"]}), response.status_code
-        # return jsonify(response.json())
+        #check if catagories is other
         name = response.json()["product"]["product_name"]
-        recipies = get_spoon(query=name, internal=True)
+        if len(name) > 15:
+            queryData = response.json()["product"]["categories"].split(":")[1]
+        else:
+            queryData = name
+        recipies = get_spoon(query=queryData, internal=True)
 
         if response.status_code == 200:
             # return jsonify(response.json()["product"]["product_name"])
