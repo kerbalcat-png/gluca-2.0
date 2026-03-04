@@ -23,7 +23,6 @@ def home():
 @app.route("/barcode", methods=["POST"])
 def process_barcode():
     image_file = request.files["file"]
-    print(image_file)
     image_file.save(image_file.filename)
     code = barcode_read(image_file.filename)
 
