@@ -24,8 +24,30 @@ def home():
 def process_barcode():
     image_file = request.files["file"]
     image_file.save(image_file.filename)
-    item_code = barcode_read(image_file.filename)
-    # off_get_catagories(item_code)
+    code = barcode_read(image_file.filename)
+
+    
+    url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
+
+    try:
+        response = requests.get(url, timeout=60)
+        # print(response.json()["product"]["ciqual_food_name_tags"][0])#debug
+        #get spoon recipies
+        if response.json()["code"] == "":
+            return jsonify({"error": response.json()["status_verbose"]}), response.status_code
+        
+        name = response.json()["product"]["product_name"]
+        print(name)
+        recipies = get_spoon(query=name, internal=True)
+
+        if response.status_code == 200:
+            # return jsonify(response.json()["product"]["product_name"])
+            return jsonify(recipies)
+        else:
+            return jsonify({"error": "Product not found"}), 404
+
+    except requests.exceptions.Timeout:
+        return jsonify({"error": "OpenFoodFacts took too long to respond"}), 504
 
 @app.route("/barcode/1/test", methods=["GET"])
 def process_barcode1_test():
@@ -52,10 +74,19 @@ def process_barcode2_test():
     url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
 
     try:
-        response = requests.get(url, timeout=30)
+        response = requests.get(url, timeout=60)
         # print(response.json()["product"]["ciqual_food_name_tags"][0])#debug
+        #get spoon recipies
+        if response.json()["code"] == "":
+            return jsonify({"error": response.json()["status_verbose"]}), response.status_code
+        
+        name = response.json()["product"]["product_name"]
+        print(name)
+        recipies = get_spoon(query=name, internal=True)
+
         if response.status_code == 200:
-            return jsonify(response.json()["product"]["ciqual_food_name_tags"][0])
+            # return jsonify(response.json()["product"]["product_name"])
+            return jsonify(recipies)
         else:
             return jsonify({"error": "Product not found"}), 404
 
@@ -78,7 +109,7 @@ def test_read():
 #     print("results", results.text)
 
 @app.route("/spoon/<string:query>", methods=["GET"])
-def get_spoon(query):
+def get_spoon(query, internal = False):
     meal_type = request.args.get("type")
     number = int(request.args.get("number", 5))
 
@@ -96,7 +127,10 @@ def get_spoon(query):
 
     if response.status_code == 200:
         print("and here to ")
-        return jsonify(response.json())
+        if not internal:
+            return jsonify(response.json())
+        else:
+            return response.json()
     else:
         return jsonify({
             "error": "Request failed",}), 404
