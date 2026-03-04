@@ -8,7 +8,6 @@ from barcode import barcode_read
 import openfoodfacts
 import cv2
 from pyzbar.pyzbar import decode
-from PIL import Image
 
 
 app = Flask(__name__)
@@ -24,12 +23,11 @@ def home():
 
 @app.route("/barcode", methods=["GET", "POST"])
 def process_barcode():
-    iimage = request.files['image']
-    nom_image = secure_filename(image.filename)
-    image = Image.open(image)
-    # code = barcode_read(image_file)
+    image_file = request.files["file"]
+    image_file.save(image_file.filename)
+    code = barcode_read(image_file.filename)
     
-    code = 1
+
     
     url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
 
@@ -39,7 +37,7 @@ def process_barcode():
         #get spoon recipies
         if response.json()["code"] == "":
             return jsonify({"error": response.json()["status_verbose"]}), response.status_code
-        
+        # return jsonify(response.json())
         name = response.json()["product"]["product_name"]
         recipies = get_spoon(query=name, internal=True)
 
