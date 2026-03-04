@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
-import logo from "./images/glucaLogo_small.png";
 
 function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -18,22 +17,7 @@ function Home() {
   }
 
   return (
-    <div className="home">
-
-      <div className="top-banner">
-        RIDE THE SPIKE
-      </div>
-
-      <nav className="navbar">
-        <div className="logo">
-          <img src={logo} alt="Gluca Logo" className="max-h-full bg-no-repeat" />
-        </div>
-        <div className="title">GLUCA</div>
-        <ul className="nav-links">
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/recipes">Recipes</Link></li>
-        </ul>
-      </nav>
+    <div className="home">     
 
       <section className="hero">
         <div className="hero-left">
