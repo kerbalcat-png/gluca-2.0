@@ -39,7 +39,7 @@ def process_barcode_test():
     # return("ok")
     code = barcode_read("crisps1.jpg")
     results = api.product.get(code, fields=["categories_hierarchy"])
-    return(results)
+    return
     
 
 def get_recipies():
