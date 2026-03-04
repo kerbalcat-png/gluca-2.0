@@ -20,9 +20,10 @@ Spoonacular_Api_Key = os.getenv("Spoonacular_Api_Key")
 def home():
     return "Flask is running! Use /spoon/<query>?type=breakfast&number=5 to search recipes."
 
-@app.route("/barcode", methods=["GET"])
+@app.route("/barcode", methods=["POST"])
 def process_barcode():
     image_file = request.files["file"]
+    print(image_file)
     image_file.save(image_file.filename)
     code = barcode_read(image_file.filename)
 
