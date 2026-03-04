@@ -13,7 +13,7 @@ function Navbar() {
 
        <nav className="navbar">
         <div className="logo">
-          <img src={logo} alt="Gluca Logo" className="max-h-full bg-no-repeat" />
+          <Link to="/"><img src={logo} alt="Gluca Logo" className="max-h-full bg-no-repeat" /></Link>
         </div>
         <div className="title">GLUCA</div>
         <ul className="nav-links">
