@@ -27,19 +27,40 @@ def process_barcode():
     item_code = barcode_read(image_file.filename)
     # off_get_catagories(item_code)
 
-@app.route("/barcode/test", methods=["GET"])
-def process_barcode_test():
+@app.route("/barcode/1/test", methods=["GET"])
+def process_barcode1_test():
     api = openfoodfacts.API(user_agent="MyAwesomeApp/1.0")
-    # item_code = barcode_read("/images/crisps2")
+
+    code = barcode_read("crisps1.jpg")
+
+    results = api.product.get(code, fields=["categories_hierarchy"])
+    tosearch = []
+    return results
+        # item_code = barcode_read("/images/crisps2")
     # item_code = 506028376763523
     # print(item_code)
     # code = "3017620422003"
     # code = "5060283763523"
     # off_get_catagories(item_code)
-    # return("ok")
+
+
+@app.route("/barcode/2/test", methods=["GET"])
+def process_barcode2_test():
+    # code = "3017620422003"#preset code for testing
     code = barcode_read("crisps1.jpg")
-    results = api.product.get(code, fields=["categories_hierarchy"])
-    return
+    
+    url = f"https://world.openfoodfacts.org/api/v2/product/{code}.json"
+
+    try:
+        response = requests.get(url, timeout=30)
+        # print(response.json()["product"]["ciqual_food_name_tags"][0])#debug
+        if response.status_code == 200:
+            return jsonify(response.json()["product"]["ciqual_food_name_tags"][0])
+        else:
+            return jsonify({"error": "Product not found"}), 404
+
+    except requests.exceptions.Timeout:
+        return jsonify({"error": "OpenFoodFacts took too long to respond"}), 504
     
 
 def get_recipies():
