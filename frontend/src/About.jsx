@@ -23,8 +23,8 @@ const About = () => {
           <p>
             Gluca empowers individuals to take control of their health by
             tracking glucose levels in real-time and transforming that data into
-            personalized recipe recommendations. We believe managing glucose
-            should feel supportive — not overwhelming.
+            personalised recipe recommendations. We believe managing glucose
+            should feel supportive - not overwhelming.
           </p>
         </section>
 
@@ -51,7 +51,7 @@ const About = () => {
               <h3>Generate</h3>
               <p>
                 Receive personalised recipe recommendations tailored to your
-                glucose range — whether you need to stabilize, increase, or lower
+                glucose range — whether you need to stabilise, increase, or lower
                 your levels.
               </p>
             </div>
@@ -62,7 +62,7 @@ const About = () => {
           <h2>Who It's For</h2>
           <p>
             Gluca is designed for individuals managing diabetes, prediabetes,
-            athletes optimizing performance, and anyone looking to better
+            athletes optimising performance, and anyone looking to better
             understand how nutrition affects their body.
           </p>
         </section>
@@ -70,7 +70,7 @@ const About = () => {
         <section className="about-section about-cta">
           <h2>Take Control Today</h2>
           <p>
-            Your glucose data tells a story. Let’s turn it into actionable,
+            Your glucose data tells a story. Let's turn it into actionable,
             delicious, and healthy decisions.
           </p>
           <button className="about-button">Start Tracking</button>
