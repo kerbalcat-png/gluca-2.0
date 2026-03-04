@@ -25,6 +25,7 @@ function Home() {
     document.getElementById("fileInput").click();
   }
 
+  // Function to convert file to bytes
   function handleBytes(e) {
     const file = e.target.files[0];
     if (!file) return;
@@ -42,7 +43,7 @@ function Home() {
           <h1>
             GREAT HEALTH <br />
             DOESN'T HAVE TO <br />
-            COST THE EARTH
+            BE BORING
           </h1>
 
           <p>
@@ -88,7 +89,7 @@ function Home() {
               )}
             </div>
 
-            <input type="submit" />
+            <input type="submit" formMethod="POST"/>
           </form>
         </div>
       </section>

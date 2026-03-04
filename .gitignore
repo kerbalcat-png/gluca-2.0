@@ -1,3 +1,5 @@
 ./gluca/node_modules/*
 .vscode/settings.json
 node_modules/.package-lock.json
+backend/__pycache__
+backend/__pycache__/barcode.cpython-313.pyc
